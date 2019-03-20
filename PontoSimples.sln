@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2048
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PontoSimples", "PontoSimples\PontoSimples.csproj", "{F4394ADA-A31B-4030-8A68-BDE129DBEBBF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F4394ADA-A31B-4030-8A68-BDE129DBEBBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4394ADA-A31B-4030-8A68-BDE129DBEBBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4394ADA-A31B-4030-8A68-BDE129DBEBBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4394ADA-A31B-4030-8A68-BDE129DBEBBF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C3E69CC1-B054-40F6-8E2B-5AFFD36E072A}
+	EndGlobalSection
+EndGlobal
