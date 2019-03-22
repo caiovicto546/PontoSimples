@@ -9,22 +9,22 @@ using PontoSimples.Models;
 
 namespace PontoSimples.Controllers
 {
-    public class HorariosController : Controller
+    public class FuncionariosController : Controller
     {
         private readonly PontoSimplesContext _context;
 
-        public HorariosController(PontoSimplesContext context)
+        public FuncionariosController(PontoSimplesContext context)
         {
             _context = context;
         }
 
-        // GET: Horarios
+        // GET: Funcionarios
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Horarios.ToListAsync());
+            return View(await _context.Funcionarios.ToListAsync());
         }
 
-        // GET: Horarios/Details/5
+        // GET: Funcionarios/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,39 +32,39 @@ namespace PontoSimples.Controllers
                 return NotFound();
             }
 
-            var horarios = await _context.Horarios
+            var funcionarios = await _context.Funcionarios
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (horarios == null)
+            if (funcionarios == null)
             {
                 return NotFound();
             }
 
-            return View(horarios);
+            return View(funcionarios);
         }
 
-        // GET: Horarios/Create
+        // GET: Funcionarios/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Horarios/Create
+        // POST: Funcionarios/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Codigo,HoraInicio,HoraFim,InicioAlmoco,FimAlmoco")] Horario horarios)
+        public async Task<IActionResult> Create([Bind("Id,Matricula,Nome,PIS")] Funcionario funcionarios)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(horarios);
+                _context.Add(funcionarios);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(horarios);
+            return View(funcionarios);
         }
 
-        // GET: Horarios/Edit/5
+        // GET: Funcionarios/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +72,22 @@ namespace PontoSimples.Controllers
                 return NotFound();
             }
 
-            var horarios = await _context.Horarios.FindAsync(id);
-            if (horarios == null)
+            var funcionarios = await _context.Funcionarios.FindAsync(id);
+            if (funcionarios == null)
             {
                 return NotFound();
             }
-            return View(horarios);
+            return View(funcionarios);
         }
 
-        // POST: Horarios/Edit/5
+        // POST: Funcionarios/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Codigo,HoraInicio,HoraFim,InicioAlmoco,FimAlmoco")] Horario horarios)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Matricula,Nome,PIS")] Funcionario funcionarios)
         {
-            if (id != horarios.Id)
+            if (id != funcionarios.Id)
             {
                 return NotFound();
             }
@@ -96,12 +96,12 @@ namespace PontoSimples.Controllers
             {
                 try
                 {
-                    _context.Update(horarios);
+                    _context.Update(funcionarios);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!HorariosExists(horarios.Id))
+                    if (!FuncionariosExists(funcionarios.Id))
                     {
                         return NotFound();
                     }
@@ -112,10 +112,10 @@ namespace PontoSimples.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(horarios);
+            return View(funcionarios);
         }
 
-        // GET: Horarios/Delete/5
+        // GET: Funcionarios/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,30 +123,30 @@ namespace PontoSimples.Controllers
                 return NotFound();
             }
 
-            var horarios = await _context.Horarios
+            var funcionarios = await _context.Funcionarios
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (horarios == null)
+            if (funcionarios == null)
             {
                 return NotFound();
             }
 
-            return View(horarios);
+            return View(funcionarios);
         }
 
-        // POST: Horarios/Delete/5
+        // POST: Funcionarios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var horarios = await _context.Horarios.FindAsync(id);
-            _context.Horarios.Remove(horarios);
+            var funcionarios = await _context.Funcionarios.FindAsync(id);
+            _context.Funcionarios.Remove(funcionarios);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool HorariosExists(int id)
+        private bool FuncionariosExists(int id)
         {
-            return _context.Horarios.Any(e => e.Id == id);
+            return _context.Funcionarios.Any(e => e.Id == id);
         }
     }
 }

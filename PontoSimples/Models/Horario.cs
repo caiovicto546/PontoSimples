@@ -10,7 +10,7 @@ namespace PontoSimples.Models
 {
     [Serializable]
     [Table("horarios")]
-    public class Horarios
+    public class Horario
     {
         [Column("id_horario")]
         public int Id { get; set; }
@@ -38,11 +38,11 @@ namespace PontoSimples.Models
         [DisplayFormat(DataFormatString = "{0:HH:MM}")]
         public DateTime FimAlmoco { get; set; }
 
-        public Horarios()
+        public Horario()
         {
         }
 
-        public Horarios(int id, string codigo, DateTime horaInicio, DateTime inicioAlmoco, DateTime fimAlmoco, DateTime horaFim)
+        public Horario(int id, string codigo, DateTime horaInicio, DateTime inicioAlmoco, DateTime fimAlmoco, DateTime horaFim)
         {
             Id = id;
             Codigo = codigo;
@@ -52,7 +52,7 @@ namespace PontoSimples.Models
             HoraFim = horaFim;
         }
 
-        public Horarios(string codigo, DateTime horaInicio, DateTime inicioAlmoco, DateTime fimAlmoco, DateTime horaFim)
+        public Horario(string codigo, DateTime horaInicio, DateTime inicioAlmoco, DateTime fimAlmoco, DateTime horaFim)
         {
             Codigo = codigo;
             HoraInicio = horaInicio;

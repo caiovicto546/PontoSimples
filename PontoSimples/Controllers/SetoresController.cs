@@ -9,22 +9,22 @@ using PontoSimples.Models;
 
 namespace PontoSimples.Controllers
 {
-    public class HorariosController : Controller
+    public class SetoresController : Controller
     {
         private readonly PontoSimplesContext _context;
 
-        public HorariosController(PontoSimplesContext context)
+        public SetoresController(PontoSimplesContext context)
         {
             _context = context;
         }
 
-        // GET: Horarios
+        // GET: Setores
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Horarios.ToListAsync());
+            return View(await _context.Setores.ToListAsync());
         }
 
-        // GET: Horarios/Details/5
+        // GET: Setores/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,39 +32,39 @@ namespace PontoSimples.Controllers
                 return NotFound();
             }
 
-            var horarios = await _context.Horarios
+            var setores = await _context.Setores
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (horarios == null)
+            if (setores == null)
             {
                 return NotFound();
             }
 
-            return View(horarios);
+            return View(setores);
         }
 
-        // GET: Horarios/Create
+        // GET: Setores/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Horarios/Create
+        // POST: Setores/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Codigo,HoraInicio,HoraFim,InicioAlmoco,FimAlmoco")] Horario horarios)
+        public async Task<IActionResult> Create([Bind("Id,CodigoSetor,NomeSetor")] Setor setores)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(horarios);
+                _context.Add(setores);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(horarios);
+            return View(setores);
         }
 
-        // GET: Horarios/Edit/5
+        // GET: Setores/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +72,22 @@ namespace PontoSimples.Controllers
                 return NotFound();
             }
 
-            var horarios = await _context.Horarios.FindAsync(id);
-            if (horarios == null)
+            var setores = await _context.Setores.FindAsync(id);
+            if (setores == null)
             {
                 return NotFound();
             }
-            return View(horarios);
+            return View(setores);
         }
 
-        // POST: Horarios/Edit/5
+        // POST: Setores/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Codigo,HoraInicio,HoraFim,InicioAlmoco,FimAlmoco")] Horario horarios)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,CodigoSetor,NomeSetor")] Setor setores)
         {
-            if (id != horarios.Id)
+            if (id != setores.Id)
             {
                 return NotFound();
             }
@@ -96,12 +96,12 @@ namespace PontoSimples.Controllers
             {
                 try
                 {
-                    _context.Update(horarios);
+                    _context.Update(setores);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!HorariosExists(horarios.Id))
+                    if (!SetoresExists(setores.Id))
                     {
                         return NotFound();
                     }
@@ -112,10 +112,10 @@ namespace PontoSimples.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(horarios);
+            return View(setores);
         }
 
-        // GET: Horarios/Delete/5
+        // GET: Setores/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,30 +123,30 @@ namespace PontoSimples.Controllers
                 return NotFound();
             }
 
-            var horarios = await _context.Horarios
+            var setores = await _context.Setores
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (horarios == null)
+            if (setores == null)
             {
                 return NotFound();
             }
 
-            return View(horarios);
+            return View(setores);
         }
 
-        // POST: Horarios/Delete/5
+        // POST: Setores/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var horarios = await _context.Horarios.FindAsync(id);
-            _context.Horarios.Remove(horarios);
+            var setores = await _context.Setores.FindAsync(id);
+            _context.Setores.Remove(setores);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool HorariosExists(int id)
+        private bool SetoresExists(int id)
         {
-            return _context.Horarios.Any(e => e.Id == id);
+            return _context.Setores.Any(e => e.Id == id);
         }
     }
 }

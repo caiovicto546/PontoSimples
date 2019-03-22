@@ -1,0 +1,38 @@
+﻿@model PontoSimples.Models.Setor
+
+@{
+    ViewData["Title"] = "Novo Setor";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h4>Setores</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CodigoSetor" class="control-label"></label>
+                <input asp-for="CodigoSetor" class="form-control" />
+                <span asp-validation-for="CodigoSetor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NomeSetor" class="control-label"></label>
+                <input asp-for="NomeSetor" class="form-control" />
+                <span asp-validation-for="NomeSetor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar para lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
