@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using PontoSimples.Models;
+using PontoSimples.Services;
 
 namespace PontoSimples
 {
@@ -37,6 +38,10 @@ namespace PontoSimples
 
             services.AddDbContext<PontoSimplesContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("PontoSimplesContext")));
+
+            services.AddScoped<FuncionarioService>();
+            services.AddScoped<SetorService>();
+            services.AddScoped<HorarioService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

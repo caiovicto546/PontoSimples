@@ -1,27 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PontoSimples.Models;
+using PontoSimples.Services;
+using PontoSimples.Models.ViewModels;
+using PontoSimples.Services.Exception;
 
 namespace PontoSimples.Controllers
 {
     public class FuncionariosController : Controller
     {
-        private readonly PontoSimplesContext _context;
+        //private readonly PontoSimplesContext _context;
+        private readonly FuncionarioService _funcionarioService;
+        private readonly SetorService _setorService;
+        private readonly HorarioService _horarioService;
 
-        public FuncionariosController(PontoSimplesContext context)
+        public FuncionariosController(PontoSimplesContext context, FuncionarioService funcionarioService, SetorService setorService, HorarioService horarioService)
         {
-            _context = context;
+            //_context = context;
+            _funcionarioService = funcionarioService;
+            _setorService = setorService;
+            _horarioService = horarioService;
         }
 
         // GET: Funcionarios
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Funcionarios.ToListAsync());
+            //return View(await _context.Funcionarios.ToListAsync());
+            return View(await _funcionarioService.FindAllAsync());
         }
 
         // GET: Funcionarios/Details/5
@@ -29,23 +40,25 @@ namespace PontoSimples.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "ID não informado" });
             }
 
-            var funcionarios = await _context.Funcionarios
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var funcionarios = await _funcionarioService.FindByIdAsync(id.Value);
             if (funcionarios == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "ID não encontrado" });
             }
 
             return View(funcionarios);
         }
 
         // GET: Funcionarios/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            return View();
+            var setor = await _setorService.FindAllAsync();
+            var horario = await _horarioService.FindAllAsync();
+            var viewModel = new FuncionarioFormViewModel { Setores = setor, Horarios = horario };
+            return View(viewModel);
         }
 
         // POST: Funcionarios/Create
@@ -53,15 +66,17 @@ namespace PontoSimples.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Matricula,Nome,PIS")] Funcionario funcionarios)
+        public async Task<IActionResult> Create(Funcionario funcionario)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _context.Add(funcionarios);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                var setor = await _setorService.FindAllAsync();
+                var horario = await _horarioService.FindAllAsync();
+                var viewModel = new FuncionarioFormViewModel { Funcionario = funcionario, Setores = setor, Horarios = horario };
+                return View(viewModel);
             }
-            return View(funcionarios);
+            await _funcionarioService.InsertAsync(funcionario);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Funcionarios/Edit/5
@@ -69,15 +84,18 @@ namespace PontoSimples.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "ID não informado" });
             }
 
-            var funcionarios = await _context.Funcionarios.FindAsync(id);
-            if (funcionarios == null)
+            var funcionario = await _funcionarioService.FindByIdAsync(id.Value);
+            if (funcionario == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "ID não encontrado" });
             }
-            return View(funcionarios);
+            List<Setor> setores = await _setorService.FindAllAsync();
+            List<Horario> horarios = await _horarioService.FindAllAsync();
+            FuncionarioFormViewModel viewModel = new FuncionarioFormViewModel { Funcionario = funcionario, Setores = setores, Horarios = horarios };
+            return View(viewModel);
         }
 
         // POST: Funcionarios/Edit/5
@@ -85,34 +103,34 @@ namespace PontoSimples.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Matricula,Nome,PIS")] Funcionario funcionarios)
+        public async Task<IActionResult> Edit(int id, Funcionario funcionario)
         {
-            if (id != funcionarios.Id)
+            if (!ModelState.IsValid)
             {
-                return NotFound();
+                var setor = await _setorService.FindAllAsync();
+                var horario = await _horarioService.FindAllAsync();
+                var viewModel = new FuncionarioFormViewModel { Funcionario = funcionario, Setores = setor, Horarios = horario };
+                return View(viewModel);
             }
 
-            if (ModelState.IsValid)
+            if (id != funcionario.Id)
             {
-                try
-                {
-                    _context.Update(funcionarios);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!FuncionariosExists(funcionarios.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                return RedirectToAction(nameof(Error), new { message = "ID Não encontrado" });
+            }
+
+            try
+            {
+                await _funcionarioService.UpdateAsync(funcionario);
                 return RedirectToAction(nameof(Index));
             }
-            return View(funcionarios);
+            catch (ExcecaoNotFound e)
+            {
+                return RedirectToAction(nameof(Error), new { message = e.Message });
+            }
+            catch (ExcecaoConcorrencia e)
+            {
+                return RedirectToAction(nameof(Error), new { message = e.Message });
+            }
         }
 
         // GET: Funcionarios/Delete/5
@@ -120,14 +138,13 @@ namespace PontoSimples.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "ID não informado" });
             }
 
-            var funcionarios = await _context.Funcionarios
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var funcionarios = await _funcionarioService.FindByIdAsync(id.Value);
             if (funcionarios == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "ID não encontrado" });
             }
 
             return View(funcionarios);
@@ -138,6 +155,18 @@ namespace PontoSimples.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            try
+            {
+                await _funcionarioService.RemoveAsync(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (ExcecaoDeIntegridade e)
+            {
+                return RedirectToAction(nameof(Error), new { message = e.Message });
+            }
+        }
+
+        /*{
             var funcionarios = await _context.Funcionarios.FindAsync(id);
             _context.Funcionarios.Remove(funcionarios);
             await _context.SaveChangesAsync();
@@ -147,6 +176,17 @@ namespace PontoSimples.Controllers
         private bool FuncionariosExists(int id)
         {
             return _context.Funcionarios.Any(e => e.Id == id);
+        }*/
+
+        public IActionResult Error(string message)
+        {
+            var viewModel = new ErrorViewModel
+            {
+                Message = message,
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            };
+
+            return View(viewModel);
         }
     }
 }
