@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,13 +17,17 @@ namespace PontoSimples.Models
         public int Matricula { get; set; }
         [Column("nome_func")]
         public string Nome { get; set; }
+        [Display(Name = "Setor")]
         public Setor Setor { get; set; }
         [Column("id_setor")]
+        [Display(Name = "Setor")]
         public int SetorId { get; set; }
         [Column("pis_func")]
         public int PIS { get; set; }
+        [Display(Name = "Horário")]
         public Horario HoraFunc { get; set; }
         [Column("id_horario")]
+        [Display(Name = "Horário")]
         public int HoraFuncId { get; set; }
 
         public Funcionario()

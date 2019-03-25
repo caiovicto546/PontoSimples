@@ -53,7 +53,7 @@ namespace PontoSimples.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Codigo,HoraInicio,HoraFim,InicioAlmoco,FimAlmoco")] Horario horarios)
+        public async Task<IActionResult> Create([Bind("Id,Codigo,Descricao,HoraInicio,HoraFim,InicioAlmoco,FimAlmoco")] Horario horarios)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace PontoSimples.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Codigo,HoraInicio,HoraFim,InicioAlmoco,FimAlmoco")] Horario horarios)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Codigo,Descricao,HoraInicio,HoraFim,InicioAlmoco,FimAlmoco")] Horario horarios)
         {
             if (id != horarios.Id)
             {

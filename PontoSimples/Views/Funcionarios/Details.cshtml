@@ -1,10 +1,10 @@
 ﻿@model PontoSimples.Models.Funcionario
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalhes";
 }
 
-<h2>Details</h2>
+<h2>@ViewData["Title"]</h2>
 
 <div>
     <h4>Funcionarios</h4>
@@ -23,14 +23,26 @@
             @Html.DisplayFor(model => model.Nome)
         </dd>
         <dt>
+            @Html.DisplayNameFor(model => model.Setor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Setor.NomeSetor)
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.PIS)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.PIS)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.HoraFunc)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HoraFunc.Descricao)
+        </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Editar</a> |
+    <a asp-action="Index">Voltar para lista</a>
 </div>

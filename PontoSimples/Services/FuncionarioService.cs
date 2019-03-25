@@ -30,7 +30,8 @@ namespace PontoSimples.Services
 
         public async Task<Funcionario> FindByIdAsync(int id)
         {
-            return await _context.Funcionarios.Include(obj => obj.Setor).FirstOrDefaultAsync(obj => obj.Id == id);
+            return await _context.Funcionarios.Include(obj => obj.Setor).Include(obj => obj.HoraFunc).
+                FirstOrDefaultAsync(obj => obj.Id == id);
         }
 
         public async Task RemoveAsync(int id)

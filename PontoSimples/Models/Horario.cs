@@ -17,6 +17,9 @@ namespace PontoSimples.Models
         [Column("cod_horario")]
         [Display(Name = "Código")]
         public string Codigo { get; set; }
+        [Column("desc_horario")]
+        [Display(Name = "Descrição do Horário")]
+        public string Descricao { get; set; }
         [Column("hora_inicio")]
         [Display(Name = "Hora Inicio")]
         [DataType(DataType.Time)]
@@ -42,19 +45,21 @@ namespace PontoSimples.Models
         {
         }
 
-        public Horario(int id, string codigo, DateTime horaInicio, DateTime inicioAlmoco, DateTime fimAlmoco, DateTime horaFim)
+        public Horario(int id, string codigo, string descricao, DateTime horaInicio, DateTime inicioAlmoco, DateTime fimAlmoco, DateTime horaFim)
         {
             Id = id;
             Codigo = codigo;
+            Descricao = descricao;
             HoraInicio = horaInicio;
             InicioAlmoco = inicioAlmoco;
             FimAlmoco = fimAlmoco;
             HoraFim = horaFim;
         }
 
-        public Horario(string codigo, DateTime horaInicio, DateTime inicioAlmoco, DateTime fimAlmoco, DateTime horaFim)
+        public Horario(string codigo, string descricao, DateTime horaInicio, DateTime inicioAlmoco, DateTime fimAlmoco, DateTime horaFim)
         {
             Codigo = codigo;
+            Descricao = descricao;
             HoraInicio = horaInicio;
             InicioAlmoco = inicioAlmoco;
             FimAlmoco = fimAlmoco;
