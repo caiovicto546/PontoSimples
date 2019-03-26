@@ -17,5 +17,6 @@ namespace PontoSimples.Models
         public DbSet<PontoSimples.Models.Horario> Horarios { get; set; }
         public DbSet<PontoSimples.Models.Setor> Setores { get; set; }
         public DbSet<PontoSimples.Models.Funcionario> Funcionarios { get; set; }
+        public DbSet<PontoSimples.Models.Ponto> Pontos { get; set; }
     }
 }

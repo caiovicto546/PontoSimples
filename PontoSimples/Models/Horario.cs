@@ -16,19 +16,23 @@ namespace PontoSimples.Models
         public int Id { get; set; }
         [Column("cod_horario")]
         [Display(Name = "Código")]
+        [Required(ErrorMessage = "Código do horário obrigatório")]
         public string Codigo { get; set; }
         [Column("desc_horario")]
         [Display(Name = "Descrição do Horário")]
+        [Required(ErrorMessage = "Descrição do horário obrigatório")]
         public string Descricao { get; set; }
         [Column("hora_inicio")]
         [Display(Name = "Hora Inicio")]
         [DataType(DataType.Time)]
         [DisplayFormat(DataFormatString = "{0:HH:MM}")]
+        [Required(ErrorMessage = "Hora do início da jornada obrigatório")]
         public DateTime HoraInicio { get; set; }
         [Column("hora_fim")]
         [Display(Name = "Hora Fim")]
         [DataType(DataType.Time)]
         [DisplayFormat(DataFormatString = "{0:HH:MM}")]
+        [Required(ErrorMessage = "Hora do fim da jornada obrigatório")]
         public DateTime HoraFim { get; set; }
         [Column("inicio_almoco")]
         [Display(Name = "Inicio Almoço")]

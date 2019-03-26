@@ -15,9 +15,11 @@ namespace PontoSimples.Models
         public int Id { get; set; }
         [Column("cod_setor")]
         [Display(Name = "Código do Setor")]
+        [Required(ErrorMessage ="Código do Setor Obrigatório")]
         public string CodigoSetor { get; set; }
         [Column("nome_setor")]
         [Display(Name = "Nome do Setor")]
+        [Required(ErrorMessage ="Nome do setor Obrigatório")]
         public string NomeSetor { get; set; }
 
         public Setor()

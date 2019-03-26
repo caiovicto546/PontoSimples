@@ -1,0 +1,34 @@
+﻿@model PontoSimples.Models.ViewModels.PontoFormViewModel
+@{
+    ViewData["Title"] = "Registro de Ponto";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h4>Informe a Matricula para registrar o ponto</h4>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Ponto.FuncId" class="control-label"></label>
+                <select asp-for="Ponto.FuncId" asp-items="@(new SelectList(Model.Funcionarios,"Id","Matricula"))"
+                 class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--
+<div>
+    <a asp-action="Index">Voltar para lista</a>
+</div>
+-->
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
