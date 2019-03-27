@@ -38,12 +38,13 @@ namespace PontoSimples.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Ponto ponto)
         {
-            if (!ModelState.IsValid)
+            /*if (!ModelState.IsValid)
             {
                 var funcionario = await _funcionarioService.FindAllAsync();
                 var viewModel = new PontoFormViewModel { Ponto = ponto, Funcionarios = funcionario };
                 return View(viewModel);
-            }
+            }*/
+            ponto.Marcacao = DateTime.Now;
             await _pontoService.InsertAsync(ponto);
             return RedirectToAction(nameof(Index));
         }

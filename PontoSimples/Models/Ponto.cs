@@ -18,29 +18,16 @@ namespace PontoSimples.Models
         [Column("id_func")]
         [Display(Name = "Matricula")]
         public int FuncId { get; set; }
-        [Column("dtMarcacao")]
-        public DateTime DataMarcacao { get; set; }
-        [Column("marcacaoMinutos")]
+        [Column("marc_ponto")]
         public DateTime Marcacao { get; set; }
 
         public Ponto()
         {
         }
 
-        public Ponto(int idPonto, Funcionario funcionario, int funcId, DateTime dataMarcacao, DateTime marcacao)
-        {
-            Id = idPonto;
-            Funcionario = funcionario;
-            FuncId = funcId;
-            DataMarcacao = dataMarcacao;
-            Marcacao = marcacao;
-        }
-
-        public Ponto(Funcionario funcionario, int funcId, DateTime dataMarcacao, DateTime marcacao)
+        public Ponto(Funcionario funcionario, DateTime marcacao)
         {
             Funcionario = funcionario;
-            FuncId = funcId;
-            DataMarcacao = dataMarcacao;
             Marcacao = marcacao;
         }
 

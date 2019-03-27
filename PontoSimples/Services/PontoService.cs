@@ -15,15 +15,8 @@ namespace PontoSimples.Services
             _context = context;
         }
 
-        public void ConverteHoraMinuto(DateTime marcAtual)
-        {
-            marcAtual = DateTime.Now;
-            int minutos = int.Parse(marcAtual.ToString("hh:mm")) * 60;
-        }
-
         public async Task InsertAsync(Ponto ponto)
         {
-            ConverteHoraMinuto(ponto.Marcacao);
             _context.Add(ponto);
             await _context.SaveChangesAsync();
         }
