@@ -49,5 +49,25 @@ namespace PontoSimples.Controllers
             return RedirectToAction(nameof(Create));
         }
 
+        //Busca das Marcações
+        public async Task<IActionResult> Search(DateTime? minDate, DateTime? maxDate)
+        {
+            if (!minDate.HasValue)
+            {
+                minDate = new DateTime(DateTime.Now.Year, 1, 1);
+            }
+
+            if (!maxDate.HasValue)
+            {
+                maxDate = DateTime.Now;
+            }
+
+            ViewData["minDate"] = minDate.Value.ToString("yyyy-MM-dd");
+            ViewData["maxDate"] = maxDate.Value.ToString("yyyy-MM-dd");
+
+            var result = await _pontoService.FindByDateAsync(minDate, maxDate);
+            return View(result);
+        }
+
     }
 }

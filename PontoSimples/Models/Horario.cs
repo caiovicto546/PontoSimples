@@ -25,24 +25,24 @@ namespace PontoSimples.Models
         [Column("hora_inicio")]
         [Display(Name = "Hora Inicio")]
         [DataType(DataType.Time)]
-        [DisplayFormat(DataFormatString = "{0:HH:MM}")]
+        //[DisplayFormat(DataFormatString = "{0:HH:MM}")]
         [Required(ErrorMessage = "Hora do início da jornada obrigatório")]
         public DateTime HoraInicio { get; set; }
         [Column("hora_fim")]
         [Display(Name = "Hora Fim")]
         [DataType(DataType.Time)]
-        [DisplayFormat(DataFormatString = "{0:HH:MM}")]
+        //[DisplayFormat(DataFormatString = "{0:HH:MM}")]
         [Required(ErrorMessage = "Hora do fim da jornada obrigatório")]
         public DateTime HoraFim { get; set; }
         [Column("inicio_almoco")]
         [Display(Name = "Inicio Almoço")]
         [DataType(DataType.Time)]
-        [DisplayFormat(DataFormatString = "{0:HH:MM}")]
+        //[DisplayFormat(DataFormatString = "{0:HH:MM}")]
         public DateTime InicioAlmoco { get; set; }
         [Column("fim_almoco")]
         [Display(Name = "Fim Almoço")]
         [DataType(DataType.Time)]
-        [DisplayFormat(DataFormatString = "{0:HH:MM}")]
+        //[DisplayFormat(DataFormatString = "{0:HH:MM}")]
         public DateTime FimAlmoco { get; set; }
 
         public Horario()
