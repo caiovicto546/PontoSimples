@@ -17,7 +17,7 @@ namespace PontoSimples.Models
         public Funcionario Funcionario { get; set; }
         [Column("id_func")]
         [Display(Name = "Matricula")]
-        public int FuncId { get; set; }
+        public int FuncionarioId { get; set; }
         [Column("marc_ponto")]
         public DateTime Marcacao { get; set; }
 

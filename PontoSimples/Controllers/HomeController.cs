@@ -13,7 +13,7 @@ namespace PontoSimples.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return Redirect("~/Pontos/Create");
         }
 
         public IActionResult About()
