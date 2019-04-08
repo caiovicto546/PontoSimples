@@ -20,9 +20,11 @@ namespace PontoSimples.Controllers
             _funcionarioService = funcionarioService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var funcionario = await _funcionarioService.FindAllAsync();
+            PontoFormViewModel viewModel = new PontoFormViewModel { Funcionarios = funcionario };
+            return View(viewModel);
         }
 
         //GET
@@ -50,7 +52,7 @@ namespace PontoSimples.Controllers
         }
 
         //Busca das Marcações
-        public async Task<IActionResult> Search(DateTime? minDate, DateTime? maxDate)
+        public async Task<IActionResult> Search(int idFunc, DateTime? minDate, DateTime? maxDate)
         {
             if (!minDate.HasValue)
             {
@@ -62,10 +64,11 @@ namespace PontoSimples.Controllers
                 maxDate = DateTime.Now;
             }
 
-            ViewData["minDate"] = minDate.Value.ToString("yyyy-MM-dd");
-            ViewData["maxDate"] = maxDate.Value.ToString("yyyy-MM-dd");
+            ViewData["minDate"] = minDate.Value.ToString("dd-MM-yyyy");
+            ViewData["maxDate"] = maxDate.Value.ToString("dd-MM-yyyy");
+            ViewData["idFunc"] = idFunc.ToString();
 
-            var result = await _pontoService.FindByDateAsync(minDate, maxDate);
+            var result = await _pontoService.FindByDateAsync(idFunc, minDate, maxDate);
             return View(result);
         }
 

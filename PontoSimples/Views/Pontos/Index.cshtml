@@ -1,5 +1,4 @@
 ﻿@model PontoSimples.Models.ViewModels.PontoFormViewModel
-
 @{
     ViewData["Title"] = "Index";
 }
@@ -11,25 +10,35 @@
         <form class="form-horizontal" asp-action="Search">
             <fieldset>
                 <legend>Busca Marcações</legend>
-                
                 <div class="form-group">
-                    <label for="minDate" class="col-lg-2 control-label">Min Date</label>
-                    <div class="col-lg-10">
+                    <label asp-for="Ponto.FuncionarioId" class="col-lg-4 control-label"></label>
+                    <div class="col-lg-8">
+                        <select asp-for="Ponto.FuncionarioId" name="idFunc" asp-items="@(new SelectList(Model.Funcionarios,"Id","Nome"))"
+                                class="form-control"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="minDate" class="col-lg-4 control-label">Data inicio</label>
+                    <div class="col-lg-8">
                         <input type="date" name="minDate" class="form-control" />
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="maxDate" class="col-lg-2 control-label">Max Date</label>
-                    <div class="col-lg-10">
+                    <label for="maxDate" class="col-lg-4 control-label">Data Término</label>
+                    <div class="col-lg-8">
                         <input type="date" name="maxDate" class="form-control" />
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">
-                        <button type="submit" class="btn btn-primary">Enviar</button>
+                        <button type="submit" class="btn btn-primary">Buscar</button>
                     </div>
                 </div>
             </fieldset>
         </form>
     </div>
 </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

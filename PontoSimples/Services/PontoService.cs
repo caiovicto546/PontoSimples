@@ -22,20 +22,28 @@ namespace PontoSimples.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task<List<Ponto>> FindByDateAsync(DateTime? minDate, DateTime? maxDate)
+        public async Task<List<Ponto>> FindByDateAsync(int idFunc, DateTime? minDate, DateTime? maxDate)
         {
             var result = from obj in _context.Pontos select obj;
             if (minDate.HasValue)
             {
-                result = result.Where(x => x.Marcacao >= minDate.Value);
+                result = result.Where(x => x.Marcacao.Date >= minDate.Value);
             }
 
             if (maxDate.HasValue)
             {
-                result = result.Where(x => x.Marcacao <= maxDate.Value);
+                result = result.Where(x => x.Marcacao.Date <= maxDate.Value);
             }
 
-            return await result.Include(x => x.Funcionario).OrderBy(x => x.Marcacao).ToListAsync();
+            
+                result = result.Where(x => x.FuncionarioId == idFunc);
+
+          
+
+            return await result
+                .Include(x => x.Funcionario)
+                .OrderBy(x => x.Marcacao)
+                .ToListAsync();
         }
     }
 }

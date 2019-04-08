@@ -19,6 +19,7 @@ namespace PontoSimples.Models
         [Display(Name = "Matricula")]
         public int FuncionarioId { get; set; }
         [Column("marc_ponto")]
+        [DataType(DataType.Date)]
         public DateTime Marcacao { get; set; }
 
         public Ponto()
