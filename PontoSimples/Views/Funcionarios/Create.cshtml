@@ -23,7 +23,10 @@
             <div class="form-group">
                 <label asp-for="Funcionario.SetorId" class="control-label"></label>
                 <select asp-for="Funcionario.SetorId" asp-items="@(new SelectList(Model.Setores,"Id","NomeSetor"))"
-                class="form-control"></select>
+                        class="form-control">
+                    <option>Seleione um Setor</option>
+                </select>
+                <span asp-validation-for="Funcionario.SetorId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Funcionario.PIS" class="control-label"></label>
@@ -33,7 +36,10 @@
             <div class="form-group">
                 <label asp-for="Funcionario.HoraFuncId" class="control-label"></label>
                 <select asp-for="Funcionario.HoraFuncId" asp-items="@(new SelectList(Model.Horarios,"Id","Descricao"))"
-                class="form-control"></select>
+                        class="form-control">
+                    <option>Selecione um Horário</option>
+                </select>
+                <span asp-validation-for="Funcionario.HoraFuncId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Salvar" class="btn btn-default" />

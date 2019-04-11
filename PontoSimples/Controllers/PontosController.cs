@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using PontoSimples.Services;
 using PontoSimples.Models.ViewModels;
 using PontoSimples.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace PontoSimples.Controllers
 {
@@ -23,15 +24,20 @@ namespace PontoSimples.Controllers
         public async Task<IActionResult> Index()
         {
             var funcionario = await _funcionarioService.FindAllAsync();
-            PontoFormViewModel viewModel = new PontoFormViewModel { Funcionarios = funcionario };
+            var viewModel = new PontoFormViewModel { Funcionarios = funcionario };
             return View(viewModel);
+        }
+
+        public IActionResult ConfirmPonto()
+        {
+            return View(nameof(Create));
         }
 
         //GET
         public async Task<IActionResult> Create()
         {
             var funcionario = await _funcionarioService.FindAllAsync();
-            var viewModel = new PontoFormViewModel { Funcionarios = funcionario };
+            PontoFormViewModel viewModel = new PontoFormViewModel { Funcionarios = funcionario };
             return View(viewModel);
         }
 
@@ -48,6 +54,7 @@ namespace PontoSimples.Controllers
             }
             ponto.Marcacao = DateTime.Now;
             await _pontoService.InsertAsync(ponto);
+            //return View(nameof(ConfirmPonto));
             return RedirectToAction(nameof(Create));
         }
 

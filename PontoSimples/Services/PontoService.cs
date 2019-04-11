@@ -24,7 +24,10 @@ namespace PontoSimples.Services
 
         public async Task<List<Ponto>> FindByDateAsync(int idFunc, DateTime? minDate, DateTime? maxDate)
         {
-            var result = from obj in _context.Pontos select obj;
+            //var result = from obj in _context.Pontos select obj;
+
+            var result = _context.Pontos.Select(x => x);           
+
             if (minDate.HasValue)
             {
                 result = result.Where(x => x.Marcacao.Date >= minDate.Value);
@@ -34,11 +37,8 @@ namespace PontoSimples.Services
             {
                 result = result.Where(x => x.Marcacao.Date <= maxDate.Value);
             }
-
-            
-                result = result.Where(x => x.FuncionarioId == idFunc);
-
-          
+                      
+            result = result.Where(x => x.FuncionarioId == idFunc);
 
             return await result
                 .Include(x => x.Funcionario)

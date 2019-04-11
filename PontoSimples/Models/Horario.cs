@@ -37,11 +37,13 @@ namespace PontoSimples.Models
         [Column("inicio_almoco")]
         [Display(Name = "Inicio Almoço")]
         [DataType(DataType.Time)]
+        [Required(ErrorMessage = "Hora do inicio do almoço obrigatório")]
         //[DisplayFormat(DataFormatString = "{0:HH:MM}")]
         public DateTime InicioAlmoco { get; set; }
         [Column("fim_almoco")]
         [Display(Name = "Fim Almoço")]
         [DataType(DataType.Time)]
+        [Required(ErrorMessage = "Hora do fim do almoço obrigatório")]
         //[DisplayFormat(DataFormatString = "{0:HH:MM}")]
         public DateTime FimAlmoco { get; set; }
 

@@ -138,13 +138,13 @@ namespace PontoSimples.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "ID não informado" });
+                return RedirectToAction(nameof(Error), new { message = "Funcionário não informado" });
             }
 
             var funcionarios = await _funcionarioService.FindByIdAsync(id.Value);
             if (funcionarios == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "ID não encontrado" });
+                return RedirectToAction(nameof(Error), new { message = "Funcionário não encontrado" });
             }
 
             return View(funcionarios);

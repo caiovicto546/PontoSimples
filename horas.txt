@@ -1,0 +1,10 @@
+select distinct f.matr_func, f.nome_func, convert(varchar, p.marc_ponto, 103) as dia, 
+coalesce(
+	(select cast(substring(convert(varchar, p2.marc_ponto, 114),0,6) as varchar) + ' - ' as [text()]
+	from ponto p2
+	where f.id_func = p2.id_func and convert(varchar,p.marc_ponto, 103) = convert(varchar, p2.marc_ponto, 103)
+	for xml path(''), type).value('.[1]', 'varchar(max)'), '') as hora
+from ponto p
+inner join funcionarios f on f.id_func = p.id_func
+group by f.id_func, f.matr_func, f.nome_func, p.marc_ponto
+order by dia desc
