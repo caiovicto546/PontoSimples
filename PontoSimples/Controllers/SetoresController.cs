@@ -1,21 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PontoSimples.Models;
+using PontoSimples.Models.ViewModels;
+using PontoSimples.Services;
+using PontoSimples.Services.Exception;
 
 namespace PontoSimples.Controllers
 {
     public class SetoresController : Controller
     {
         private readonly PontoSimplesContext _context;
+        private readonly SetorService _setorService;
 
-        public SetoresController(PontoSimplesContext context)
+        public SetoresController(PontoSimplesContext context, SetorService setorService)
         {
             _context = context;
+            _setorService = setorService;
         }
 
         // GET: Setores
@@ -138,15 +144,32 @@ namespace PontoSimples.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var setores = await _context.Setores.FindAsync(id);
-            _context.Setores.Remove(setores);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                await _setorService.RemoveAsync(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (ExcecaoDeIntegridade)
+            {
+
+                return RedirectToAction(nameof(Error), new { message = "Impossível deletar. Setor já está vinculado a algum funcionário." });
+            }
         }
 
         private bool SetoresExists(int id)
         {
             return _context.Setores.Any(e => e.Id == id);
+        }
+
+        public IActionResult Error(string message)
+        {
+            var viewModel = new ErrorViewModel
+            {
+                Message = message,
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier //Pega o ID interno da requisição para exibir o erro corretamente.
+            };
+
+            return View(viewModel);
         }
     }
 }

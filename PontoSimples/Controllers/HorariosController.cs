@@ -1,22 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PontoSimples.Models;
+using PontoSimples.Models.ViewModels;
+using PontoSimples.Services;
+using PontoSimples.Services.Exception;
 
 namespace PontoSimples.Controllers
 {
     public class HorariosController : Controller
     {
         private readonly PontoSimplesContext _context;
+        private readonly HorarioService _horarioService;
 
-        public HorariosController(PontoSimplesContext context)
+        //public HorariosController(PontoSimplesContext context)
+        //{
+        //    _context = context;
+        //}
+
+        public HorariosController(PontoSimplesContext context, HorarioService horarioService)
         {
             _context = context;
+            _horarioService = horarioService;
         }
+
+        //public HorariosController(HorarioService horarioService)
+        //{
+        //    _horarioService = horarioService;
+        //}
+
+
+
+
 
         // GET: Horarios
         public async Task<IActionResult> Index()
@@ -138,15 +155,32 @@ namespace PontoSimples.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var horarios = await _context.Horarios.FindAsync(id);
-            _context.Horarios.Remove(horarios);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                await _horarioService.RemoveAsync(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (ExcecaoDeIntegridade)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Impossível deletar. Horário já está vinculado a algum funcionário." });
+            }
+            
         }
 
         private bool HorariosExists(int id)
         {
             return _context.Horarios.Any(e => e.Id == id);
+        }
+
+        public IActionResult Error(string message)
+        {
+            var viewModel = new ErrorViewModel
+            {
+                Message = message,
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier //Pega o ID interno da requisição para exibir o erro corretamente.
+            };
+
+            return View(viewModel);
         }
     }
 }

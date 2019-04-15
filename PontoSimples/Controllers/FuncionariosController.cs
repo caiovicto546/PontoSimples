@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using PontoSimples.Models;
 using PontoSimples.Services;
 using PontoSimples.Models.ViewModels;
@@ -115,7 +111,7 @@ namespace PontoSimples.Controllers
 
             if (id != funcionario.Id)
             {
-                return RedirectToAction(nameof(Error), new { message = "ID Não encontrado" });
+                return RedirectToAction(nameof(Error), new { message = "ID Não corresponde" });
             }
 
             try
@@ -160,9 +156,9 @@ namespace PontoSimples.Controllers
                 await _funcionarioService.RemoveAsync(id);
                 return RedirectToAction(nameof(Index));
             }
-            catch (ExcecaoDeIntegridade e)
+            catch (ExcecaoDeIntegridade)
             {
-                return RedirectToAction(nameof(Error), new { message = e.Message });
+                return RedirectToAction(nameof(Error), new { message = "Impossível deletar pois o funcionário já possui marcação." });
             }
         }
 
@@ -183,7 +179,7 @@ namespace PontoSimples.Controllers
             var viewModel = new ErrorViewModel
             {
                 Message = message,
-                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier //Pega o ID interno da requisição para exibir o erro corretamente.
             };
 
             return View(viewModel);
