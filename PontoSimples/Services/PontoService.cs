@@ -22,7 +22,7 @@ namespace PontoSimples.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task<List<Ponto>> FindByDateAsync(int idFunc, DateTime? minDate, DateTime? maxDate)
+        public async Task<List<Ponto>> FindByDateIDAsync(int idFunc, DateTime? minDate, DateTime? maxDate)
         {
             //var result = from obj in _context.Pontos select obj;
 
@@ -43,6 +43,29 @@ namespace PontoSimples.Services
             return await result
                 .Include(x => x.Funcionario)
                 .OrderBy(x => x.Marcacao)
+                .ToListAsync();
+        }
+
+        public async Task<List<IGrouping<Funcionario,Ponto>>> FindByDateAsync(DateTime? minDate, DateTime? maxDate)
+        {
+            //var result = from obj in _context.Pontos select obj;
+
+            var result = _context.Pontos.Select(x => x);
+
+            if (minDate.HasValue)
+            {
+                result = result.Where(x => x.Marcacao.Date >= minDate.Value);
+            }
+
+            if (maxDate.HasValue)
+            {
+                result = result.Where(x => x.Marcacao.Date <= maxDate.Value);
+            }
+
+            return await result
+                .Include(x => x.Funcionario)
+                .OrderBy(x => x.Marcacao)
+                .GroupBy(x => x.Funcionario)
                 .ToListAsync();
         }
     }

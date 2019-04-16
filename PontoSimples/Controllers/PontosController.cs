@@ -75,7 +75,26 @@ namespace PontoSimples.Controllers
             ViewData["maxDate"] = maxDate.Value.ToString("dd-MM-yyyy");
             ViewData["idFunc"] = idFunc.ToString();
 
-            var result = await _pontoService.FindByDateAsync(idFunc, minDate, maxDate);
+            var result = await _pontoService.FindByDateIDAsync(idFunc, minDate, maxDate);
+            return View(result);
+        }
+
+        public async Task<IActionResult> GroupingSearch(DateTime? minDate, DateTime? maxDate)
+        {
+            if (!minDate.HasValue)
+            {
+                minDate = new DateTime(DateTime.Now.Year, 1, 1);
+            }
+
+            if (!maxDate.HasValue)
+            {
+                maxDate = DateTime.Now;
+            }
+
+            ViewData["minDate"] = minDate.Value.ToString("dd-MM-yyyy");
+            ViewData["maxDate"] = maxDate.Value.ToString("dd-MM-yyyy");
+
+            var result = await _pontoService.FindByDateAsync(minDate, maxDate);
             return View(result);
         }
 
