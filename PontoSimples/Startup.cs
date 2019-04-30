@@ -45,6 +45,7 @@ namespace PontoSimples
             services.AddScoped<SetorService>();
             services.AddScoped<HorarioService>();
             services.AddScoped<PontoService>();
+            services.AddScoped<LoginService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

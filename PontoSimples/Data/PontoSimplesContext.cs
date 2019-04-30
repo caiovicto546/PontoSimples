@@ -17,5 +17,6 @@ namespace PontoSimples.Models
         public DbSet<Setor> Setores { get; set; }
         public DbSet<Funcionario> Funcionarios { get; set; }
         public DbSet<Ponto> Pontos { get; set; }
+        public DbSet<Login> Logins { get; set; }
     }
 }
