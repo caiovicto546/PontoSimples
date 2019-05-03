@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using PontoSimples.Models;
 
-namespace PontoSimples.Models
+namespace PontoSimples.Data
 {
     public class PontoSimplesContext : DbContext
     {
@@ -17,6 +19,13 @@ namespace PontoSimples.Models
         public DbSet<Setor> Setores { get; set; }
         public DbSet<Funcionario> Funcionarios { get; set; }
         public DbSet<Ponto> Pontos { get; set; }
-        public DbSet<Login> Logins { get; set; }
+    }
+
+    public class ApplicationDbContext : IdentityDbContext
+    {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
+        {
+        }
     }
 }

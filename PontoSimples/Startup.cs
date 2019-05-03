@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Globalization;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Localization;
+using Microsoft.EntityFrameworkCore;
+using PontoSimples.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
 using PontoSimples.Models;
 using PontoSimples.Services;
+using System.Globalization;
 
 namespace PontoSimples
 {
@@ -35,43 +37,42 @@ namespace PontoSimples
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<PontoSimplesContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddDefaultIdentity<IdentityUser>()
+                .AddEntityFrameworkStores<PontoSimplesContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
-            services.AddDbContext<PontoSimplesContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("PontoSimplesContext")));
+            
 
             services.AddScoped<FuncionarioService>();
             services.AddScoped<SetorService>();
             services.AddScoped<HorarioService>();
             services.AddScoped<PontoService>();
-            services.AddScoped<LoginService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            var ptBR = new CultureInfo("pt-Br");
-            var localizarionOptions = new RequestLocalizationOptions
-            {
-                DefaultRequestCulture = new RequestCulture(ptBR),
-                SupportedCultures = new List<CultureInfo> { ptBR },
-                SupportedUICultures = new List<CultureInfo> { ptBR }
-            };
-
-            app.UseRequestLocalization(localizarionOptions);
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
+                app.UseHsts();
             }
 
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

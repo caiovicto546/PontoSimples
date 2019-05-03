@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using PontoSimples.Models;
 using PontoSimples.Services.Exception;
+using PontoSimples.Data;
 
 namespace PontoSimples.Services
 {

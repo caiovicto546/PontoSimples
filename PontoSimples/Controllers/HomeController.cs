@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PontoSimples.Models;
-using PontoSimples.Models.ViewModels;
 
 namespace PontoSimples.Controllers
 {
@@ -13,6 +12,7 @@ namespace PontoSimples.Controllers
     {
         public IActionResult Index()
         {
+            //return View();
             return Redirect("~/Pontos/Create");
         }
 

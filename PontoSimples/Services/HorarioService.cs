@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using PontoSimples.Models;
 using PontoSimples.Services.Exception;
+using PontoSimples.Data;
 
 namespace PontoSimples.Services
 {

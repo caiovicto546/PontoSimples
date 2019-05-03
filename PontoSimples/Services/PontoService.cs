@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using PontoSimples.Models;
+using PontoSimples.Data;
 
 namespace PontoSimples.Services
 {

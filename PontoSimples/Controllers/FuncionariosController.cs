@@ -6,6 +6,7 @@ using PontoSimples.Models;
 using PontoSimples.Services;
 using PontoSimples.Models.ViewModels;
 using PontoSimples.Services.Exception;
+using PontoSimples.Data;
 
 namespace PontoSimples.Controllers
 {
