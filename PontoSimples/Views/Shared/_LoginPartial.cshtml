@@ -5,21 +5,29 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
-            </li>
-            <li>
-                <button type="submit" class="btn btn-link navbar-btn navbar-link">Logout</button>
-            </li>
-        </ul>
-    </form>
+    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" >
+            <ul class="nav navbar-nav">
+                <li><a asp-area="" asp-controller="Horarios" asp-action="Index">Hor&aacute;rios</a></li>
+                <li><a asp-area="" asp-controller="Setores" asp-action="Index">Setores</a></li>
+                <li><a asp-area="" asp-controller="Funcionarios" asp-action="Index">Funcion&aacute;rios</a></li>
+                <li><a asp-area="" asp-controller="Pontos" asp-action="Index">Ponto</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Ol&aacute; @UserManager.GetUserName(User)!</a>
+                </li>
+                <li>
+                    <a asp-area="Identity" asp-page="/Account/Register">Cadastrar usu&aacute;rio</a>
+                </li>
+                <li>
+                    <button type="submit" class="btn btn-link navbar-btn navbar-link">Logout</button>
+                </li>
+            </ul>
+</form>
 }
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li><a asp-area="Identity" asp-page="/Account/Register">Register</a></li>
         <li><a asp-area="Identity" asp-page="/Account/Login">Login</a></li>
     </ul>
 }

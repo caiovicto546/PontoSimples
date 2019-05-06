@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using PontoSimples.Models;
 using PontoSimples.Services;
 using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 namespace PontoSimples
 {
@@ -37,13 +38,18 @@ namespace PontoSimples
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            //services.AddDbContext<ApplicationDbContext>(options =>
-            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            //services.AddIdentity<IdentityUser, IdentityRole>()
+            //    .AddEntityFrameworkStores<ApplicationDbContext>()
+            //    .AddDefaultTokenProviders();
+
             services.AddDbContext<PontoSimplesContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<PontoSimplesContext>();
+                .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             
@@ -57,6 +63,16 @@ namespace PontoSimples
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            var ptBR = new CultureInfo("pt-Br");
+            var localizarionOptions = new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture(ptBR),
+                SupportedCultures = new List<CultureInfo> { ptBR },
+                SupportedUICultures = new List<CultureInfo> { ptBR }
+            };
+
+            app.UseRequestLocalization(localizarionOptions);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

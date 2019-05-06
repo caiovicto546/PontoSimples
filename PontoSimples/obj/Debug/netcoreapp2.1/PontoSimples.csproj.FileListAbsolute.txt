@@ -52,3 +52,16 @@ C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\Razor\Vie
 C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\Razor\Views\Setores\Details.g.cshtml.cs
 C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\Razor\Views\Setores\Edit.g.cshtml.cs
 C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\Razor\Views\Setores\Index.g.cshtml.cs
+C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Login.g.cshtml.cs
+C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\_ViewImports.g.cshtml.cs
+C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.g.cshtml.cs
+C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ViewImports.g.cshtml.cs
+C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Register.g.cshtml.cs
+C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\PontoSimples.csprojAssemblyReference.cache
+C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Manage\Index.g.cshtml.cs
+C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Manage\_ViewImports.g.cshtml.cs
+C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Manage\_ManageNav.g.cshtml.cs
+C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Manage\SetPassword.g.cshtml.cs
+C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\ResetPassword.g.cshtml.cs
+C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Manage\_Layout.g.cshtml.cs
+C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Manage\ChangePassword.g.cshtml.cs

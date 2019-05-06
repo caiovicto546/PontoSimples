@@ -19,13 +19,6 @@ namespace PontoSimples.Data
         public DbSet<Setor> Setores { get; set; }
         public DbSet<Funcionario> Funcionarios { get; set; }
         public DbSet<Ponto> Pontos { get; set; }
-    }
-
-    public class ApplicationDbContext : IdentityDbContext
-    {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
-        {
-        }
-    }
+        //public DbSet<AspNetUsers> AspNetUsers { get; set; }
+    }    
 }
