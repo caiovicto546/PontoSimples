@@ -7,6 +7,7 @@ using PontoSimples.Services;
 using PontoSimples.Models.ViewModels;
 using PontoSimples.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PontoSimples.Controllers
 {
@@ -21,6 +22,7 @@ namespace PontoSimples.Controllers
             _funcionarioService = funcionarioService;
         }
 
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             var funcionario = await _funcionarioService.FindAllAsync();
@@ -28,6 +30,7 @@ namespace PontoSimples.Controllers
             return View(viewModel);
         }
 
+        [Authorize]
         public IActionResult ConfirmPonto()
         {
             return View(nameof(Create));
@@ -59,6 +62,7 @@ namespace PontoSimples.Controllers
         }
 
         //Busca das Marcações
+        [Authorize]
         public async Task<IActionResult> Search(int idFunc, DateTime? minDate, DateTime? maxDate)
         {
             if (!minDate.HasValue)
@@ -79,6 +83,7 @@ namespace PontoSimples.Controllers
             return View(result);
         }
 
+        [Authorize]
         public async Task<IActionResult> GroupingSearch(DateTime? minDate, DateTime? maxDate)
         {
             if (!minDate.HasValue)

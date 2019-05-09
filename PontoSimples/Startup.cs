@@ -63,15 +63,15 @@ namespace PontoSimples
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            var ptBR = new CultureInfo("pt-Br");
-            var localizarionOptions = new RequestLocalizationOptions
-            {
-                DefaultRequestCulture = new RequestCulture(ptBR),
-                SupportedCultures = new List<CultureInfo> { ptBR },
-                SupportedUICultures = new List<CultureInfo> { ptBR }
-            };
+            //var ptBR = new CultureInfo("pt-Br");
+            //var localizarionOptions = new RequestLocalizationOptions
+            //{
+            //    DefaultRequestCulture = new RequestCulture(ptBR),
+            //    SupportedCultures = new List<CultureInfo> { ptBR },
+            //    SupportedUICultures = new List<CultureInfo> { ptBR }
+            //};
 
-            app.UseRequestLocalization(localizarionOptions);
+            //app.UseRequestLocalization(localizarionOptions);
 
             if (env.IsDevelopment())
             {

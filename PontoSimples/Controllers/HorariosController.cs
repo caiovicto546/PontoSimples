@@ -8,6 +8,7 @@ using PontoSimples.Models.ViewModels;
 using PontoSimples.Services;
 using PontoSimples.Services.Exception;
 using PontoSimples.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PontoSimples.Controllers
 {
@@ -37,12 +38,14 @@ namespace PontoSimples.Controllers
 
 
         // GET: Horarios
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Horarios.ToListAsync());
         }
 
         // GET: Horarios/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -61,6 +64,7 @@ namespace PontoSimples.Controllers
         }
 
         // GET: Horarios/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -71,6 +75,7 @@ namespace PontoSimples.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id,Codigo,Descricao,HoraInicio,HoraFim,InicioAlmoco,FimAlmoco")] Horario horarios)
         {
             if (ModelState.IsValid)
@@ -83,6 +88,7 @@ namespace PontoSimples.Controllers
         }
 
         // GET: Horarios/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -103,6 +109,7 @@ namespace PontoSimples.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Codigo,Descricao,HoraInicio,HoraFim,InicioAlmoco,FimAlmoco")] Horario horarios)
         {
             if (id != horarios.Id)
@@ -134,6 +141,7 @@ namespace PontoSimples.Controllers
         }
 
         // GET: Horarios/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -154,6 +162,7 @@ namespace PontoSimples.Controllers
         // POST: Horarios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             try

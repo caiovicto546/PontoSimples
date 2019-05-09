@@ -11,6 +11,7 @@ using PontoSimples.Models.ViewModels;
 using PontoSimples.Services;
 using PontoSimples.Services.Exception;
 using PontoSimples.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PontoSimples.Controllers
 {
@@ -26,12 +27,14 @@ namespace PontoSimples.Controllers
         }
 
         // GET: Setores
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Setores.ToListAsync());
         }
 
         // GET: Setores/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -50,6 +53,7 @@ namespace PontoSimples.Controllers
         }
 
         // GET: Setores/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -60,6 +64,7 @@ namespace PontoSimples.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id,CodigoSetor,NomeSetor")] Setor setores)
         {
             if (ModelState.IsValid)
@@ -72,6 +77,7 @@ namespace PontoSimples.Controllers
         }
 
         // GET: Setores/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -92,6 +98,7 @@ namespace PontoSimples.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,CodigoSetor,NomeSetor")] Setor setores)
         {
             if (id != setores.Id)
@@ -123,6 +130,7 @@ namespace PontoSimples.Controllers
         }
 
         // GET: Setores/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -143,6 +151,7 @@ namespace PontoSimples.Controllers
         // POST: Setores/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             try

@@ -7,11 +7,17 @@ using PontoSimples.Services;
 using PontoSimples.Models.ViewModels;
 using PontoSimples.Services.Exception;
 using PontoSimples.Data;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Identity.UI.Pages.Account.Internal;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PontoSimples.Controllers
 {
     public class FuncionariosController : Controller
     {
+        
         //private readonly PontoSimplesContext _context;
         private readonly FuncionarioService _funcionarioService;
         private readonly SetorService _setorService;
@@ -26,6 +32,7 @@ namespace PontoSimples.Controllers
         }
 
         // GET: Funcionarios
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             //return View(await _context.Funcionarios.ToListAsync());
@@ -33,6 +40,7 @@ namespace PontoSimples.Controllers
         }
 
         // GET: Funcionarios/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -50,6 +58,7 @@ namespace PontoSimples.Controllers
         }
 
         // GET: Funcionarios/Create
+        [Authorize]
         public async Task<IActionResult> Create()
         {
             var setor = await _setorService.FindAllAsync();
@@ -63,6 +72,7 @@ namespace PontoSimples.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create(Funcionario funcionario)
         {
             if (!ModelState.IsValid)
@@ -77,6 +87,7 @@ namespace PontoSimples.Controllers
         }
 
         // GET: Funcionarios/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -100,6 +111,7 @@ namespace PontoSimples.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, Funcionario funcionario)
         {
             if (!ModelState.IsValid)
@@ -131,6 +143,7 @@ namespace PontoSimples.Controllers
         }
 
         // GET: Funcionarios/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -150,6 +163,7 @@ namespace PontoSimples.Controllers
         // POST: Funcionarios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             try

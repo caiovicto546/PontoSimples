@@ -73,7 +73,7 @@ using PontoSimples.Areas.Identity.Pages.Account.Manage;
             WriteLiteral("\r\n<h2>Administração da sua conta</h2>\r\n\r\n<div>\r\n    <h4>Altere as definições da sua conta</h4>\r\n    <hr />\r\n    <div class=\"row\">\r\n        <div class=\"col-md-3\">\r\n            ");
             EndContext();
             BeginContext(285, 29, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "781a5abf8f404c2bb456216d421ec972", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "afd8b44d30d646d085cb617b77354e4c", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();
