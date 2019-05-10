@@ -75,7 +75,7 @@ Write(ViewData["Title"]);
             WriteLiteral("</h2>\n\n<nav class=\"navbar navbar-inverse\">\n    <div class=\"container-fluid\">\n        ");
             EndContext();
             BeginContext(193, 835, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "71719a6fc3534ade812eca06dd48e4bb", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6e53012c4bfb47428106fa7e6b5497d3", async() => {
                 BeginContext(245, 167, true);
                 WriteLiteral("\n            \n            <div class=\"form-group\">\n                <div class=\"form-group\">\n                    <input type=\"hidden\" class=\"form-control\" name=\"idFunc\"");
                 EndContext();
