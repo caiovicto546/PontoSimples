@@ -8,6 +8,7 @@ using PontoSimples.Models.ViewModels;
 using PontoSimples.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
+using Rotativa.AspNetCore;
 
 namespace PontoSimples.Controllers
 {
@@ -103,5 +104,12 @@ namespace PontoSimples.Controllers
             return View(result);
         }
 
+        [Authorize]
+        public IActionResult PrintSearch()
+        {
+            var p = new ViewAsPdf("Search");
+
+            return p;
+        }
     }
 }

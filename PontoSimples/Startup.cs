@@ -16,6 +16,7 @@ using PontoSimples.Models;
 using PontoSimples.Services;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
+using Rotativa.AspNetCore;
 
 namespace PontoSimples
 {
@@ -96,6 +97,9 @@ namespace PontoSimples
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            //Configuração do Rotativa (Gerador de PDF)
+            RotativaConfiguration.Setup(env);
         }
     }
 }
