@@ -56,7 +56,7 @@ using PontoSimples.Models;
             WriteLiteral("<!DOCTYPE html>\r\n<html>\r\n");
             EndContext();
             BeginContext(25, 766, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "da8dbd4edd0b45a599bf5ba7cd48d4d8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2b654afddc5146279f066957b102d7dd", async() => {
                 BeginContext(31, 753, true);
                 WriteLiteral(@"
     <script>function subst() {
@@ -93,7 +93,7 @@ using PontoSimples.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(793, 354, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "344a757fb521451fa04cfbfc21cdb1e0", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6e6896311d2e4859aa14eab3f4abca76", async() => {
                 BeginContext(846, 294, true);
                 WriteLiteral(@"
     <table style=""width: 100%"">

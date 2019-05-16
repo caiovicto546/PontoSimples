@@ -76,8 +76,8 @@ namespace PontoSimples.Controllers
                 maxDate = DateTime.Now;
             }
 
-            ViewData["minDate"] = minDate.Value.ToString("dd-MM-yyyy");
-            ViewData["maxDate"] = maxDate.Value.ToString("dd-MM-yyyy");
+            ViewData["minDate"] = minDate.Value.ToString("yyyy-MM-dd");
+            ViewData["maxDate"] = maxDate.Value.ToString("yyyy-MM-dd");
             ViewData["idFunc"] = idFunc.ToString();
 
             var result = await _pontoService.FindByDateIDAsync(idFunc, minDate, maxDate);

@@ -69,3 +69,5 @@ C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\PontoSimp
 C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\Razor\Views\Relatorios\PrePrintFuncionarios.g.cshtml.cs
 C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\Razor\Views\Relatorios\PrintFuncionarios.g.cshtml.cs
 C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\Razor\Views\Relatorios\PrePrintSearch.g.cshtml.cs
+C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\Razor\Views\Relatorios\PrintSearch.g.cshtml.cs

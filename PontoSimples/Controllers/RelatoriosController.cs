@@ -10,6 +10,7 @@ using Rotativa.AspNetCore;
 using PontoSimples.Models;
 using PontoSimples.Services;
 using PontoSimples.Data;
+using PontoSimples.Models.ViewModels;
 
 namespace PontoSimples.Controllers
 {
@@ -17,11 +18,13 @@ namespace PontoSimples.Controllers
     {
         private readonly PontoSimplesContext _context;
         private readonly FuncionarioService _funcionarioService;
+        private readonly PontoService _pontoService;
 
-        public RelatoriosController(FuncionarioService funcionarioService, PontoSimplesContext context)
+        public RelatoriosController(FuncionarioService funcionarioService, PontoSimplesContext context, PontoService pontoService)
         {
             _funcionarioService = funcionarioService;
             _context = context;
+            _pontoService = pontoService;
         }
 
         public IActionResult Index()
@@ -64,11 +67,7 @@ namespace PontoSimples.Controllers
         //    return p;
         //}
 
-
-
-
-        //private PontoSimplesContext db = new PontoSimplesContext();
-        public ActionResult PrintFuncionarios(int? pagina, Boolean? pdf)
+        public ActionResult PrintFuncionarios()
         {
             var listaFuncionarios = _context.Funcionarios.ToList();
 
@@ -91,6 +90,57 @@ namespace PontoSimples.Controllers
                 CustomSwitches = customSwitches,
                 PageMargins = new Rotativa.AspNetCore.Options.Margins(30, 10, 15, 10)
             };
+            return relatorioPDF;
+        }
+
+
+
+        public async Task<IActionResult> PrePrintSearch()
+        {
+            var funcionario = await _funcionarioService.FindAllAsync();
+            var viewModel = new PontoFormViewModel { Funcionarios = funcionario };
+            return View(viewModel);
+        }
+
+
+
+        public async Task<IActionResult> PrintSearch(int idFunc, DateTime? minDate, DateTime? maxDate)
+        {
+            if (!minDate.HasValue)
+            {
+                minDate = new DateTime(DateTime.Now.Year, 1, 1);
+            }
+
+            if (!maxDate.HasValue)
+            {
+                maxDate = DateTime.Now;
+            }
+
+            ViewData["minDate"] = minDate.Value.ToString("yyyy-MM-dd");
+            ViewData["maxDate"] = maxDate.Value.ToString("yyyy-MM-dd");
+            ViewData["idFunc"] = idFunc.ToString();
+
+            var result = await _pontoService.FindByDateIDAsync(idFunc, minDate, maxDate);
+
+            int pagNumero = 1;
+
+            string customSwitches = string.Format("--header-left \"MARCAÇÕES DE PONTO\" " +
+                    "--header-spacing \"8\" " +
+                    "--header-font-name \"Open Sans\" " +
+                    "--footer-font-size \"10\" " +
+                    "--footer-font-name \"Open Sans\" " +
+                    "--header-font-size \"10\" " +
+                    "--footer-right \"Pag: [page] de [toPage]\"");
+
+            var relatorioPDF = new ViewAsPdf
+            {
+                ViewName = "PrintSearch",
+                IsGrayScale = true,
+                CustomSwitches = customSwitches,
+                Model = result.ToPagedList(pagNumero, result.Count),
+                PageMargins = new Rotativa.AspNetCore.Options.Margins(30, 10, 15, 10)
+            };
+
             return relatorioPDF;
         }
     }
