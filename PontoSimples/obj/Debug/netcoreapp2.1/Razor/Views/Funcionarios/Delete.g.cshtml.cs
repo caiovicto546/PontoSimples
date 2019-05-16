@@ -178,12 +178,12 @@ Write(ViewData["Title"]);
             WriteLiteral("\n        </dd>\n    </dl>\n    \n    ");
             EndContext();
             BeginContext(1089, 1383, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "037b84dfae9f4f87951d52e03e37fea1", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "593c90f6792c4815b4097043244de42a", async() => {
                 BeginContext(1115, 10, true);
                 WriteLiteral("\r\n        ");
                 EndContext();
                 BeginContext(1125, 36, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "116cc0c606c94045a9949847e784a0ab", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "96b67cf24b97420f90785b59cb8e7b42", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -208,7 +208,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
                 WriteLiteral("\r\n        <input type=\"button\" value=\"Deletar\" class=\"btn btn-danger\" data-toggle=\"modal\" data-target=\"#modal\"/> |\r\n        ");
                 EndContext();
                 BeginContext(1285, 43, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ab74601f6afb45679a174e0f3f7fa877", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cc27a366db634dba9462d94d163a56f4", async() => {
                     BeginContext(1307, 17, true);
                     WriteLiteral("Voltar para lista");
                     EndContext();

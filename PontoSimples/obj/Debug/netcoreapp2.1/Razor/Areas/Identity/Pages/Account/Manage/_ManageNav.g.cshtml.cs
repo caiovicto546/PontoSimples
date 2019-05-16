@@ -86,7 +86,7 @@ WriteAttributeValue("", 211, ManageNavPages.IndexNavClass(ViewContext), 211, 42,
             WriteLiteral(">");
             EndContext();
             BeginContext(255, 32, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5aabbef7a7c344b3b0b2dce41985da9b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "09243002007c4061b24c7d3a79c3ca2d", async() => {
                 BeginContext(277, 6, true);
                 WriteLiteral("Perfil");
                 EndContext();
@@ -118,7 +118,7 @@ WriteAttributeValue("", 309, ManageNavPages.ChangePasswordNavClass(ViewContext),
             WriteLiteral(">");
             EndContext();
             BeginContext(362, 61, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "406be1b46fce4d1c9b1a44e758158ec5", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4de76e7731594ffb94b2449086d7a531", async() => {
                 BeginContext(414, 5, true);
                 WriteLiteral("Senha");
                 EndContext();
@@ -160,7 +160,7 @@ WriteAttributeValue("", 485, ManageNavPages.ExternalLoginsNavClass(ViewContext),
             WriteLiteral(">");
             EndContext();
             BeginContext(538, 70, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "560ad7e807d047789c6659fb88625eeb", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e83061f68b8d47faa9942000db4c9a06", async() => {
                 BeginContext(589, 15, true);
                 WriteLiteral("External logins");
                 EndContext();

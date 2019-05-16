@@ -10,8 +10,12 @@ namespace PontoSimples.Data
 {
     public class PontoSimplesContext : DbContext
     {
-        public PontoSimplesContext (DbContextOptions<PontoSimplesContext> options)
+        public PontoSimplesContext(DbContextOptions<PontoSimplesContext> options)
             : base(options)
+        {
+        }
+
+        public PontoSimplesContext()
         {
         }
 
@@ -19,6 +23,5 @@ namespace PontoSimples.Data
         public DbSet<Setor> Setores { get; set; }
         public DbSet<Funcionario> Funcionarios { get; set; }
         public DbSet<Ponto> Pontos { get; set; }
-        //public DbSet<AspNetUsers> AspNetUsers { get; set; }
     }    
 }

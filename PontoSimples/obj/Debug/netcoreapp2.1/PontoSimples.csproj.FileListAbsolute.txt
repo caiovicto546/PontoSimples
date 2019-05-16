@@ -63,6 +63,9 @@ C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\Razor\Are
 C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Manage\_Layout.g.cshtml.cs
 C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Manage\ChangePassword.g.cshtml.cs
 C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\AccessDenied.g.cshtml.cs
+C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\Razor\Views\Relatorios\Footer.g.cshtml.cs
+C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\Razor\Views\Relatorios\Header.g.cshtml.cs
 C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\PontoSimples.csprojAssemblyReference.cache
-C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\Razor\Views\Relatorios\PrePrintFuncionarios.g.cshtml.cs
 C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\Razor\Views\Relatorios\PrintFuncionarios.g.cshtml.cs
+C:\VISUAL STUDIO\Web\PontoSimples\PontoSimples\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
