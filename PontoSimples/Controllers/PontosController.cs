@@ -56,9 +56,11 @@ namespace PontoSimples.Controllers
                 var viewModel = new PontoFormViewModel { Ponto = ponto, Funcionarios = funcionario };
                 return View(viewModel);
             }
+
             ponto.Marcacao = DateTime.Now;
             await _pontoService.InsertAsync(ponto);
             return RedirectToAction(nameof(Create));
+            
         }
 
         //Busca das Marcações

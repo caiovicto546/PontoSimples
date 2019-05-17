@@ -18,7 +18,7 @@ namespace PontoSimples.Models
         public Funcionario Funcionario { get; set; }
         [Column("id_func")]
         [Display(Name = "Matricula")]
-        //[Required(ErrorMessage = "Selecione um nome válido")]
+        [Required(ErrorMessage = "Selecione um nome válido")]
         public int FuncionarioId { get; set; }
         [Column("marc_ponto")]
         //[DataType(DataType.Date)]

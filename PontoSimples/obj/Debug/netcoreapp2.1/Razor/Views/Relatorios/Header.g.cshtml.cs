@@ -55,7 +55,7 @@ using PontoSimples.Models;
             WriteLiteral("\r\n<!DOCTYPE html>\r\n<html>\r\n");
             EndContext();
             BeginContext(27, 478, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0c37428bfb2148f38b047512cdb4c28c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "41d386b162c943bfa3b7c73110c438c3", async() => {
                 BeginContext(80, 57, true);
                 WriteLiteral("\r\n    <div class=\"row\">\r\n        <div class=\"col-xs-6\">\r\n");
                 EndContext();

@@ -130,7 +130,8 @@ namespace PontoSimples.Controllers
                     "--footer-font-size \"10\" " +
                     "--footer-font-name \"Open Sans\" " +
                     "--header-font-size \"10\" " +
-                    "--footer-right \"Pag: [page] de [toPage]\"");
+                    "--footer-right \"Pag: [page] de [toPage]\""                    
+                    );
 
             var relatorioPDF = new ViewAsPdf
             {
