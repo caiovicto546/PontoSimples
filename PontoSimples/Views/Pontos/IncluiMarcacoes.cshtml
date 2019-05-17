@@ -1,0 +1,40 @@
+﻿@model PontoSimples.Models.ViewModels.PontoFormViewModel
+
+@{
+    ViewData["Title"] = "Incluir marcacoes manualmente";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h4>Ponto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="IncluiMarcacoes">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Ponto.FuncionarioId" class="control-label">Nome</label>
+
+                <select asp-for="Ponto.FuncionarioId" asp-items="@(new SelectList(Model.Funcionarios,"Id","Nome"))"
+                        class="form-control">
+                    <option>Selecione um funcionário</option>
+                </select>
+
+                <span asp-validation-for="Ponto.FuncionarioId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ponto.Marcacao" class="control-label">Marcação (Data e Hora)</label>
+                <input asp-for="Ponto.Marcacao" class="form-control" />
+                <span asp-validation-for="Ponto.Marcacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

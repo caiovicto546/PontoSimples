@@ -21,7 +21,7 @@ namespace PontoSimples.Models
         //[Required(ErrorMessage = "Selecione um nome válido")]
         public int FuncionarioId { get; set; }
         [Column("marc_ponto")]
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date)]
         public DateTime Marcacao { get; set; }
 
         public Ponto()

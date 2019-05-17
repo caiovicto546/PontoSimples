@@ -58,7 +58,6 @@ namespace PontoSimples.Controllers
             }
             ponto.Marcacao = DateTime.Now;
             await _pontoService.InsertAsync(ponto);
-            //return View(nameof(ConfirmPonto));
             return RedirectToAction(nameof(Create));
         }
 
@@ -97,19 +96,32 @@ namespace PontoSimples.Controllers
                 maxDate = DateTime.Now;
             }
 
-            ViewData["minDate"] = minDate.Value.ToString("dd-MM-yyyy");
-            ViewData["maxDate"] = maxDate.Value.ToString("dd-MM-yyyy");
+            ViewData["minDate"] = minDate.Value.ToString("yyyy-MM-dd");
+            ViewData["maxDate"] = maxDate.Value.ToString("yyyy-MM-dd");
 
             var result = await _pontoService.FindByDateAsync(minDate, maxDate);
             return View(result);
         }
 
-        [Authorize]
-        public IActionResult PrintSearch()
+        public async Task<IActionResult> IncluiMarcacoes()
         {
-            var p = new ViewAsPdf("Search");
+            var funcionario = await _funcionarioService.FindAllAsync();
+            PontoFormViewModel viewModel = new PontoFormViewModel { Funcionarios = funcionario };
+            return View(viewModel);
+        }
 
-            return p;
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> IncluiMarcacoes(Ponto ponto)
+        {
+            if (!ModelState.IsValid)
+            {
+                var funcionario = await _funcionarioService.FindAllAsync();
+                var viewModel = new PontoFormViewModel { Ponto = ponto, Funcionarios = funcionario };
+                return View(viewModel);
+            }
+            await _pontoService.InsertAsync(ponto);
+            return RedirectToAction(nameof(IncluiMarcacoes));
         }
     }
 }
