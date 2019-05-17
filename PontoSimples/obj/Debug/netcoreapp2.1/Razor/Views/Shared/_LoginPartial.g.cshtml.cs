@@ -90,12 +90,12 @@ using Microsoft.AspNetCore.Identity;
             WriteLiteral("    ");
             EndContext();
             BeginContext(185, 2056, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f4660c9dc789483b935339d924c4e4a3", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5eee544ec8c34f9785d638a19cd9eb96", async() => {
                 BeginContext(339, 63, true);
                 WriteLiteral("\r\n            <ul class=\"nav navbar-nav\">\r\n                <li>");
                 EndContext();
                 BeginContext(402, 79, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a3c43f5fc9cf44128cbdec407243c911", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "35548914d8744973a5679538f0430b9c", async() => {
                     BeginContext(462, 15, true);
                     WriteLiteral("Hor&aacute;rios");
                     EndContext();
@@ -121,7 +121,7 @@ using Microsoft.AspNetCore.Identity;
                 WriteLiteral("</li>\r\n                <li>");
                 EndContext();
                 BeginContext(508, 70, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "02a9300ba5b84a979943725e088fe95b", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f79c5ba2164b4f1fba638955f4b81301", async() => {
                     BeginContext(567, 7, true);
                     WriteLiteral("Setores");
                     EndContext();
@@ -147,7 +147,7 @@ using Microsoft.AspNetCore.Identity;
                 WriteLiteral("</li>\r\n                <li>");
                 EndContext();
                 BeginContext(605, 87, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5bd6d762901d4064a346849305d09725", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "742a813f18ef4765a7ebbf63159d5764", async() => {
                     BeginContext(669, 19, true);
                     WriteLiteral("Funcion&aacute;rios");
                     EndContext();
@@ -173,7 +173,7 @@ using Microsoft.AspNetCore.Identity;
                 WriteLiteral("</li>\r\n                <li>\r\n                    <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">Ponto</a>\r\n                    <ul class=\"dropdown-menu\">\r\n                        <li>");
                 EndContext();
                 BeginContext(887, 92, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "decfca58a0ab4db78733346d3c3b6557", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "217f47237b15457fb4845332aa2d3bb9", async() => {
                     BeginContext(945, 30, true);
                     WriteLiteral("Exibir Marca&ccedil;&otilde;es");
                     EndContext();
@@ -199,7 +199,7 @@ using Microsoft.AspNetCore.Identity;
                 WriteLiteral("</li>\r\n                        <li>");
                 EndContext();
                 BeginContext(1014, 103, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f6a3fc4be52a4c258cce1bdfacda04a3", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ad0ffa2a3986426ebfd2f7b2f94a06b7", async() => {
                     BeginContext(1082, 31, true);
                     WriteLiteral("Incluir Marca&ccedil;&otilde;es");
                     EndContext();
@@ -231,7 +231,7 @@ using Microsoft.AspNetCore.Identity;
                         <li>");
                 EndContext();
                 BeginContext(1374, 97, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0534aef2327a4430a01f6425259c4c10", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e29813d55d5f4a6088fda379a731ebcc", async() => {
                     BeginContext(1448, 19, true);
                     WriteLiteral("Funcion&aacute;rios");
                     EndContext();
@@ -257,7 +257,7 @@ using Microsoft.AspNetCore.Identity;
                 WriteLiteral("</li>\r\n                        <li>");
                 EndContext();
                 BeginContext(1506, 100, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d193ed9ee1954de2b8be1dc03aa9f98b", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f9cfb96e91ad4510b4507bef451629ab", async() => {
                     BeginContext(1577, 25, true);
                     WriteLiteral("Relat&oacute;rio de Ponto");
                     EndContext();
@@ -283,7 +283,7 @@ using Microsoft.AspNetCore.Identity;
                 WriteLiteral("</li>\r\n                    </ul>\r\n                </li>\r\n            </ul>\r\n            <ul class=\"nav navbar-nav navbar-right\">\r\n                <li>\r\n                    ");
                 EndContext();
                 BeginContext(1778, 117, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f01c63b376754d74a9ac12671d4a50be", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8375c29505d0482b99ec3031d5a43690", async() => {
                     BeginContext(1849, 11, true);
                     WriteLiteral("Ol&aacute; ");
                     EndContext();
@@ -318,7 +318,7 @@ using Microsoft.AspNetCore.Identity;
                 WriteLiteral("\r\n                </li>\r\n                <li>\r\n                    ");
                 EndContext();
                 BeginContext(1962, 80, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6c1065b6e64440a1aa4e2be136024736", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bf3c8846292f49909d872545058e62fc", async() => {
                     BeginContext(2014, 24, true);
                     WriteLiteral("Cadastrar usu&aacute;rio");
                     EndContext();
@@ -389,7 +389,7 @@ else
             WriteLiteral("    <ul class=\"nav navbar-nav navbar-right\">\r\n        <li>");
             EndContext();
             BeginContext(2313, 58, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bac6372bfd6e4a17933edff6e933bf7a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f3591172164946b7b0c0dfa550240dc9", async() => {
                 BeginContext(2362, 5, true);
                 WriteLiteral("Login");
                 EndContext();
